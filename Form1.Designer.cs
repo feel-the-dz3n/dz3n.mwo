@@ -60,19 +60,24 @@
             this.BorderOfPanel = new System.Windows.Forms.Panel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.PanelAeroBackground = new System.Windows.Forms.Panel();
+            this.UpdatePanel = new System.Windows.Forms.Panel();
+            this.UpdProgress = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
             this.LoggedInPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.UnloggedPanel.SuspendLayout();
             this.LoadingPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.UpdatePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ExitButton
             // 
-            this.ExitButton.BackColor = System.Drawing.Color.Firebrick;
             resources.ApplyResources(this.ExitButton, "ExitButton");
+            this.ExitButton.BackColor = System.Drawing.Color.Firebrick;
             this.ExitButton.ForeColor = System.Drawing.Color.White;
             this.ExitButton.Name = "ExitButton";
+            this.toolTip.SetToolTip(this.ExitButton, resources.GetString("ExitButton.ToolTip"));
             this.ExitButton.UseCompatibleTextRendering = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             this.ExitButton.DragEnter += new System.Windows.Forms.DragEventHandler(this.label1_DragEnter);
@@ -83,66 +88,73 @@
             // 
             // WindowBorder
             // 
+            resources.ApplyResources(this.WindowBorder, "WindowBorder");
             this.WindowBorder.BackColor = System.Drawing.Color.Gray;
             this.WindowBorder.ForeColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.WindowBorder, "WindowBorder");
             this.WindowBorder.Name = "WindowBorder";
+            this.toolTip.SetToolTip(this.WindowBorder, resources.GetString("WindowBorder.ToolTip"));
             // 
             // LoggedAsLabel
             // 
             resources.ApplyResources(this.LoggedAsLabel, "LoggedAsLabel");
             this.LoggedAsLabel.ForeColor = System.Drawing.Color.White;
             this.LoggedAsLabel.Name = "LoggedAsLabel";
+            this.toolTip.SetToolTip(this.LoggedAsLabel, resources.GetString("LoggedAsLabel.ToolTip"));
             // 
             // LogoutLink
             // 
-            this.LogoutLink.ActiveLinkColor = System.Drawing.Color.White;
             resources.ApplyResources(this.LogoutLink, "LogoutLink");
+            this.LogoutLink.ActiveLinkColor = System.Drawing.Color.White;
             this.LogoutLink.LinkColor = System.Drawing.Color.Silver;
             this.LogoutLink.Name = "LogoutLink";
             this.LogoutLink.TabStop = true;
+            this.toolTip.SetToolTip(this.LogoutLink, resources.GetString("LogoutLink.ToolTip"));
             this.LogoutLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLink_LinkClicked);
             // 
             // LoggedInPanel
             // 
+            resources.ApplyResources(this.LoggedInPanel, "LoggedInPanel");
             this.LoggedInPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.LoggedInPanel.Controls.Add(this.OnlinePlayers);
             this.LoggedInPanel.Controls.Add(this.PlayMWOLink);
             this.LoggedInPanel.Controls.Add(this.LoggedAsLabel);
             this.LoggedInPanel.Controls.Add(this.LogoutLink);
-            resources.ApplyResources(this.LoggedInPanel, "LoggedInPanel");
             this.LoggedInPanel.Name = "LoggedInPanel";
+            this.toolTip.SetToolTip(this.LoggedInPanel, resources.GetString("LoggedInPanel.ToolTip"));
             // 
             // OnlinePlayers
             // 
+            resources.ApplyResources(this.OnlinePlayers, "OnlinePlayers");
             this.OnlinePlayers.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.OnlinePlayers.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.OnlinePlayers.LinkColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.OnlinePlayers, "OnlinePlayers");
             this.OnlinePlayers.Name = "OnlinePlayers";
             this.OnlinePlayers.TabStop = true;
+            this.toolTip.SetToolTip(this.OnlinePlayers, resources.GetString("OnlinePlayers.ToolTip"));
             this.OnlinePlayers.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnlinePlayers_LinkClicked);
             // 
             // PlayMWOLink
             // 
-            this.PlayMWOLink.ActiveLinkColor = System.Drawing.Color.White;
             resources.ApplyResources(this.PlayMWOLink, "PlayMWOLink");
+            this.PlayMWOLink.ActiveLinkColor = System.Drawing.Color.White;
             this.PlayMWOLink.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(113)))));
             this.PlayMWOLink.Name = "PlayMWOLink";
             this.PlayMWOLink.TabStop = true;
+            this.toolTip.SetToolTip(this.PlayMWOLink, resources.GetString("PlayMWOLink.ToolTip"));
             this.PlayMWOLink.Click += new System.EventHandler(this.PlayMWOLink_Click);
             // 
             // WindowBorder2
             // 
+            resources.ApplyResources(this.WindowBorder2, "WindowBorder2");
             this.WindowBorder2.BackColor = System.Drawing.Color.Gray;
             this.WindowBorder2.ForeColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.WindowBorder2, "WindowBorder2");
             this.WindowBorder2.Name = "WindowBorder2";
+            this.toolTip.SetToolTip(this.WindowBorder2, resources.GetString("WindowBorder2.ToolTip"));
             // 
             // ChangeSrv
             // 
-            this.ChangeSrv.ActiveLinkColor = System.Drawing.Color.White;
             resources.ApplyResources(this.ChangeSrv, "ChangeSrv");
+            this.ChangeSrv.ActiveLinkColor = System.Drawing.Color.White;
             this.ChangeSrv.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ChangeSrv.Name = "ChangeSrv";
             this.ChangeSrv.TabStop = true;
@@ -151,45 +163,51 @@
             // 
             // flowLayoutPanel1
             // 
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel1.Controls.Add(this.label3);
             this.flowLayoutPanel1.Controls.Add(this.ChangeSrv);
             this.flowLayoutPanel1.Controls.Add(this.PingLabel);
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.toolTip.SetToolTip(this.flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Name = "label3";
+            this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             // 
             // PingLabel
             // 
             resources.ApplyResources(this.PingLabel, "PingLabel");
             this.PingLabel.ForeColor = System.Drawing.Color.White;
             this.PingLabel.Name = "PingLabel";
+            this.toolTip.SetToolTip(this.PingLabel, resources.GetString("PingLabel.ToolTip"));
             // 
             // linkLabel1
             // 
-            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.White;
             resources.ApplyResources(this.linkLabel1, "linkLabel1");
+            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.White;
             this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.TabStop = true;
+            this.toolTip.SetToolTip(this.linkLabel1, resources.GetString("linkLabel1.ToolTip"));
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // linkLabel2
             // 
-            this.linkLabel2.ActiveLinkColor = System.Drawing.Color.White;
             resources.ApplyResources(this.linkLabel2, "linkLabel2");
+            this.linkLabel2.ActiveLinkColor = System.Drawing.Color.White;
             this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.TabStop = true;
+            this.toolTip.SetToolTip(this.linkLabel2, resources.GetString("linkLabel2.ToolTip"));
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // UnloggedPanel
             // 
+            resources.ApplyResources(this.UnloggedPanel, "UnloggedPanel");
             this.UnloggedPanel.BackColor = System.Drawing.Color.Transparent;
             this.UnloggedPanel.Controls.Add(this.label7);
             this.UnloggedPanel.Controls.Add(this.SingUpButton);
@@ -199,8 +217,8 @@
             this.UnloggedPanel.Controls.Add(this.LoginBox);
             this.UnloggedPanel.Controls.Add(this.LogInButton);
             this.UnloggedPanel.Controls.Add(this.label4);
-            resources.ApplyResources(this.UnloggedPanel, "UnloggedPanel");
             this.UnloggedPanel.Name = "UnloggedPanel";
+            this.toolTip.SetToolTip(this.UnloggedPanel, resources.GetString("UnloggedPanel.ToolTip"));
             this.UnloggedPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.UnloggedPanel_Paint);
             // 
             // label7
@@ -208,45 +226,52 @@
             resources.ApplyResources(this.label7, "label7");
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Name = "label7";
+            this.toolTip.SetToolTip(this.label7, resources.GetString("label7.ToolTip"));
             // 
             // SingUpButton
             // 
-            this.SingUpButton.ActiveLinkColor = System.Drawing.Color.White;
             resources.ApplyResources(this.SingUpButton, "SingUpButton");
+            this.SingUpButton.ActiveLinkColor = System.Drawing.Color.White;
             this.SingUpButton.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(113)))));
             this.SingUpButton.Name = "SingUpButton";
             this.SingUpButton.TabStop = true;
+            this.toolTip.SetToolTip(this.SingUpButton, resources.GetString("SingUpButton.ToolTip"));
             this.SingUpButton.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SingUpButton_LinkClicked);
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Name = "panel1";
+            this.toolTip.SetToolTip(this.panel1, resources.GetString("panel1.ToolTip"));
             // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Name = "label5";
+            this.toolTip.SetToolTip(this.label5, resources.GetString("label5.ToolTip"));
             // 
             // PwdBox
             // 
             resources.ApplyResources(this.PwdBox, "PwdBox");
             this.PwdBox.Name = "PwdBox";
+            this.toolTip.SetToolTip(this.PwdBox, resources.GetString("PwdBox.ToolTip"));
             // 
             // LoginBox
             // 
             resources.ApplyResources(this.LoginBox, "LoginBox");
             this.LoginBox.Name = "LoginBox";
+            this.toolTip.SetToolTip(this.LoginBox, resources.GetString("LoginBox.ToolTip"));
             // 
             // LogInButton
             // 
-            this.LogInButton.ActiveLinkColor = System.Drawing.Color.White;
             resources.ApplyResources(this.LogInButton, "LogInButton");
+            this.LogInButton.ActiveLinkColor = System.Drawing.Color.White;
             this.LogInButton.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(113)))));
             this.LogInButton.Name = "LogInButton";
             this.LogInButton.TabStop = true;
+            this.toolTip.SetToolTip(this.LogInButton, resources.GetString("LogInButton.ToolTip"));
             this.LogInButton.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogInButton_LinkClicked);
             // 
             // label4
@@ -254,22 +279,25 @@
             resources.ApplyResources(this.label4, "label4");
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Name = "label4";
+            this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
             // 
             // LoadingPanel
             // 
+            resources.ApplyResources(this.LoadingPanel, "LoadingPanel");
             this.LoadingPanel.BackColor = System.Drawing.Color.Transparent;
             this.LoadingPanel.Controls.Add(this.OkButton);
             this.LoadingPanel.Controls.Add(this.LoadingLabel);
-            resources.ApplyResources(this.LoadingPanel, "LoadingPanel");
             this.LoadingPanel.Name = "LoadingPanel";
+            this.toolTip.SetToolTip(this.LoadingPanel, resources.GetString("LoadingPanel.ToolTip"));
             // 
             // OkButton
             // 
-            this.OkButton.ActiveLinkColor = System.Drawing.Color.White;
             resources.ApplyResources(this.OkButton, "OkButton");
+            this.OkButton.ActiveLinkColor = System.Drawing.Color.White;
             this.OkButton.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.OkButton.Name = "OkButton";
             this.OkButton.TabStop = true;
+            this.toolTip.SetToolTip(this.OkButton, resources.GetString("OkButton.ToolTip"));
             this.OkButton.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OkButton_LinkClicked);
             // 
             // LoadingLabel
@@ -277,21 +305,24 @@
             resources.ApplyResources(this.LoadingLabel, "LoadingLabel");
             this.LoadingLabel.ForeColor = System.Drawing.Color.White;
             this.LoadingLabel.Name = "LoadingLabel";
+            this.toolTip.SetToolTip(this.LoadingLabel, resources.GetString("LoadingLabel.ToolTip"));
             // 
             // pictureBox2
             // 
+            resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::Dz3n.MWO.Properties.Resources.mwo_logo;
-            resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
+            this.toolTip.SetToolTip(this.pictureBox2, resources.GetString("pictureBox2.ToolTip"));
             this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
             // 
             // BorderOfPanel
             // 
-            this.BorderOfPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             resources.ApplyResources(this.BorderOfPanel, "BorderOfPanel");
+            this.BorderOfPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BorderOfPanel.Name = "BorderOfPanel";
+            this.toolTip.SetToolTip(this.BorderOfPanel, resources.GetString("BorderOfPanel.ToolTip"));
             // 
             // toolTip
             // 
@@ -302,15 +333,39 @@
             // 
             // PanelAeroBackground
             // 
-            this.PanelAeroBackground.BackColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.PanelAeroBackground, "PanelAeroBackground");
+            this.PanelAeroBackground.BackColor = System.Drawing.Color.Black;
             this.PanelAeroBackground.Name = "PanelAeroBackground";
+            this.toolTip.SetToolTip(this.PanelAeroBackground, resources.GetString("PanelAeroBackground.ToolTip"));
+            // 
+            // UpdatePanel
+            // 
+            resources.ApplyResources(this.UpdatePanel, "UpdatePanel");
+            this.UpdatePanel.BackColor = System.Drawing.Color.Transparent;
+            this.UpdatePanel.Controls.Add(this.UpdProgress);
+            this.UpdatePanel.Controls.Add(this.label1);
+            this.UpdatePanel.Name = "UpdatePanel";
+            this.toolTip.SetToolTip(this.UpdatePanel, resources.GetString("UpdatePanel.ToolTip"));
+            // 
+            // UpdProgress
+            // 
+            resources.ApplyResources(this.UpdProgress, "UpdProgress");
+            this.UpdProgress.Name = "UpdProgress";
+            this.toolTip.SetToolTip(this.UpdProgress, resources.GetString("UpdProgress.ToolTip"));
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Name = "label1";
+            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Controls.Add(this.UpdatePanel);
             this.Controls.Add(this.LoadingPanel);
             this.Controls.Add(this.UnloggedPanel);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -328,6 +383,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.Activated += new System.EventHandler(this.Form1_Activated);
             this.Deactivate += new System.EventHandler(this.Form1_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -339,8 +395,8 @@
             this.UnloggedPanel.ResumeLayout(false);
             this.UnloggedPanel.PerformLayout();
             this.LoadingPanel.ResumeLayout(false);
-            this.LoadingPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.UpdatePanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,6 +433,9 @@
         private System.Windows.Forms.LinkLabel OkButton;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Panel PanelAeroBackground;
+        private System.Windows.Forms.Panel UpdatePanel;
+        private System.Windows.Forms.ProgressBar UpdProgress;
+        private System.Windows.Forms.Label label1;
     }
 }
 

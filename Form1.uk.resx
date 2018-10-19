@@ -188,4 +188,7 @@
   <data name="LoadingPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>496, 142</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Завтаження інсталляції MWO</value>
+  </data>
 </root>

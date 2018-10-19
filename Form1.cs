@@ -156,6 +156,7 @@ namespace Dz3n.MWO
                 LoggedInPanel.Visible = false;
                 UnloggedPanel.Visible = false;
                 LoadingPanel.Visible = false;
+                UpdatePanel.Visible = false;
 
                 AcceptButton = LogInButton;
 
@@ -190,17 +191,18 @@ namespace Dz3n.MWO
             }
         }
 
-        public void SetMessage(string text, Panel okPanel = null)
+        public void SetMessage(string text, Panel okPanel = null, string okText = "OK")
         {
             if (this.InvokeRequired)
             {
                 this.BeginInvoke(new Action(delegate {
-                    SetMessage(text, okPanel);
+                    SetMessage(text, okPanel, okText);
                 }));
                
             }
             else
             {
+                OkButton.Text = okText;
                 LoadingLabel.Text = text;
                 SetPanel(LoadingPanel);
                 if (okPanel == null)
@@ -503,15 +505,58 @@ namespace Dz3n.MWO
         {
             if (CheckMWO())
             {
-                new Thread(PingTool).Start();
-
-                if (AccessToken.Length >= 1)
-                {
-                    //WindowState = FormWindowState.Minimized;
-                    new Thread(CheckToken).Start();
-                }
-                else SetPanel(UnloggedPanel);
+                new Thread(LauncherStart).Start();
+                
             }
+        }
+
+        private void LauncherStart()
+        {
+
+            new Thread(PingTool).Start();
+
+            if (AccessToken.Length >= 1)
+            {
+                if (CheckUpdates()) return;
+                // MWO 1.0.0.0 is available. You can't play MWO until update.
+                //WindowState = FormWindowState.Minimized;
+                new Thread(CheckToken).Start();
+            }
+            else SetPanel(UnloggedPanel);
+        }
+
+        public bool CheckUpdates(bool ct = true)
+        {
+            var versInfo = FileVersionInfo.GetVersionInfo("scripts\\MostWantedOnline.asi");
+            string fileVersion = versInfo.ProductVersion;
+            if(ct)SetMessage("MWO Version: " + fileVersion);
+            string latest = new WebClient().DownloadString("https://raw.githubusercontent.com/MWOTeam/MWOUpdateInfo/master/mwo-latest.txt");
+
+            //SetMessage("scripts\\MostWantedOnline.asi: " + fileVersion);
+            //return true;
+            if (latest != fileVersion)
+            {
+                string UpdateBtn = "Update";
+                string UpdateAv = String.Format("MWO {0} is available. You can't play until you update MWO.", latest);
+                if (Lang == "ru")
+                {
+                    UpdateAv = String.Format("Доступен MWO {0}. Вы не можете играть, пока не обновите MWO.", latest);
+                    UpdateBtn = "Обновить";
+                }
+                if (Lang == "uk")
+                {
+                    UpdateAv = String.Format("Доступний MWO {0}. Ви не можете грати, поки не оновите MWO.", latest);
+                    UpdateBtn = "Оновити";
+                }
+                if (Lang == "pl")
+                {
+                    UpdateAv = String.Format("MWO {0} jest dostępne. Nie możesz grać w mwo, dopuki nie zainstalujesz aktualizacji.", latest);
+                    UpdateBtn = "Aktualizacja";
+                }
+                SetMessage(UpdateAv, UpdatePanel, UpdateBtn);
+                return true;
+            }
+            return false;
         }
 
         private void Form1_Activated(object sender, EventArgs e)
@@ -644,11 +689,6 @@ namespace Dz3n.MWO
                 }
                 else
                 {
-                    string m = LoginBox.Text + " is hacking the Pentagon now...";
-                    if (Lang == "ru") m = LoginBox.Text + " сейчас взламывает Пентагон...";
-                    if (Lang == "uk") m = LoginBox.Text + " наразі зламує Пентагон...";
-                    if (Lang == "pl") m = LoginBox.Text + " właśnie hakuje Pentagon...";
-                    SetMessage(m);
                     new Thread(LogInThread).Start();
                 }
             }
@@ -664,6 +704,14 @@ namespace Dz3n.MWO
 
         public void LogInThread()
         {
+
+            string m = LoginBox.Text + " is hacking the Pentagon now...";
+            if (Lang == "ru") m = LoginBox.Text + " сейчас взламывает Пентагон...";
+            if (Lang == "uk") m = LoginBox.Text + " наразі зламує Пентагон...";
+            if (Lang == "pl") m = LoginBox.Text + " właśnie hakuje Pentagon...";
+            SetMessage(m);
+
+            if (CheckUpdates(false)) return;
             try
             {
                 using (WebClient client = new WebClient())
@@ -779,8 +827,34 @@ namespace Dz3n.MWO
 
         private void OkButton_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (OkSetPanel == UpdatePanel) StartUpdate();
             SetPanel(OkSetPanel);
             OkSetPanel = null;
+        }
+
+        public void StartUpdate()
+        {
+            string url = "https://raw.githubusercontent.com/MWOTeam/MWOUpdateInfo/master/MWO_Setup.exe";
+            WebClient w = new WebClient();
+            w.DownloadFileCompleted += UpdateCompleted;
+            w.DownloadProgressChanged += UpdateProgress;
+            w.DownloadFileAsync(new Uri(url), "MWO_Setup.exe");
+        }
+
+        private void UpdateProgress(object sender, DownloadProgressChangedEventArgs e)
+        {
+            UpdProgress.Value = e.ProgressPercentage;
+        }
+
+        private void UpdateCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            if(e.Error != null)
+            {
+                SetMessage("Error: " + e.Error.Message);
+                return;
+            }
+            Process.Start(".\\MWO_Setup.exe", "-s");
+            Environment.Exit(0);
         }
 
         private void button1_Click_2(object sender, EventArgs e)

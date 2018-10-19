@@ -191,4 +191,7 @@
   <data name="LoadingPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>511, 167</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Pobieranie installatora MWO</value>
+  </data>
 </root>
