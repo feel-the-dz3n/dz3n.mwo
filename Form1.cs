@@ -527,6 +527,8 @@ namespace Dz3n.MWO
 
         public bool CheckUpdates(bool ct = true)
         {
+            return false;
+
             var versInfo = FileVersionInfo.GetVersionInfo("scripts\\MostWantedOnline.asi");
             string fileVersion = versInfo.ProductVersion;
             if(ct)SetMessage("MWO Version: " + fileVersion);
