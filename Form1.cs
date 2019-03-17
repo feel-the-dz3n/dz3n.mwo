@@ -23,17 +23,18 @@ namespace Dz3n.MWO
         public static bool FirstPing = true;
         public static bool ForceCloseForm = false;
         public static string Lang = "en";
-        public static Panel CurrentPanel = null;
-        public static Panel OkSetPanel = null;
         public static Color PanelDefault = Color.FromArgb(28, 28, 28);
         public static int LogInTimes = 0;
         public static bool ServerIsOkay = false;
         public static string AccessToken = "";
         public static string[] Servers = { "US", "RU", "EU" };
         public static int server = 2;
-        public static Point panelLocation = new Point(41, 142);
+        public static Point panelLocation = new Point(41, 0/*142*/);
+        public static Size panelSize = new Size(440, 77);
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
+
+        public UnloggedCtrl Unlogged;
 
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -149,81 +150,83 @@ namespace Dz3n.MWO
         }
         #endregion
 
-        public void SetPanel(Panel panel)
+        private UserControl currentPanel = null;
+        public UserControl CurrentPanel
         {
-            if (!InvokeRequired)
-            {
-                LoggedInPanel.Visible = false;
-                UnloggedPanel.Visible = false;
-                LoadingPanel.Visible = false;
-                UpdatePanel.Visible = false;
-
-                AcceptButton = LogInButton;
-
-                if (panel == LoggedInPanel)
-                {
-                    flowLayoutPanel1.Visible = true;
-                    LoggedAsLabel.Text = "Hey, " + LoginBox.Text;
-                    if (Lang == "ru") LoggedAsLabel.Text = "Хэй, " + LoginBox.Text;
-                    if (Lang == "uk") LoggedAsLabel.Text = "Гей, " + LoginBox.Text;
-                    if (Lang == "pl") LoggedAsLabel.Text = "Witaj, " + LoginBox.Text;
-                    AcceptButton = PlayMWOLink;
-                }
-
-                panel.Location = panelLocation;
-                panel.Visible = true;
-
-                if(panel == LoggedInPanel)
-                {
-                    BorderOfPanel.BackColor = PanelDefault;
-                }
-                else
-                {
-                    BorderOfPanel.BackColor = Color.Transparent;
-                }
-
-                if(WindowState != FormWindowState.Minimized && panel != LoadingPanel) Activate();
-                CurrentPanel = panel;
-            }
-            else
-            {
-                BeginInvoke(new Action(delegate { SetPanel(panel); }));
-            }
+            get => currentPanel;
+            set => SetPanel(value);
         }
 
-        public void SetMessage(string text, Panel okPanel = null, string okText = "OK")
+        public void SetPanel(UserControl panel)
+        {
+            if(InvokeRequired)
+            {
+                Invoke(new Action(() => SetPanel(panel)));
+                return;
+            }
+
+            if (BorderOfPanel.Controls.Contains(panel))
+                BorderOfPanel.Controls.Remove(panel);
+
+            if (CurrentPanel is UnloggedCtrl)
+                CurrentPanel.Visible = false;
+            else if (CurrentPanel != null)
+                CurrentPanel.Dispose();
+
+            if (panel == null)
+                return;
+
+            BorderOfPanel.Controls.Add(panel);
+
+            currentPanel = panel;
+            currentPanel.Visible = true;
+            currentPanel.Location = panelLocation;
+            // currentPanel.Size = panelSize;
+            
+            if (panel is LoggedCtrl)
+            {
+                flowLayoutPanel1.Visible = true;
+
+                var ctrl = panel as LoggedCtrl;
+
+                if (Lang == "ru") ctrl.LoggedAsLabel.Text = "Хэй, " + Unlogged.LoginBox.Text;
+                else if (Lang == "uk") ctrl.LoggedAsLabel.Text = "Гей, " + Unlogged.LoginBox.Text;
+                else if (Lang == "pl") ctrl.LoggedAsLabel.Text = "Witaj, " + Unlogged.LoginBox.Text;
+                else ctrl.LoggedAsLabel.Text = "Hey, " + Unlogged.LoginBox.Text;
+
+                BorderOfPanel.BackColor = PanelDefault;
+            }
+            else
+                BorderOfPanel.BackColor = Color.Transparent;
+
+            if (panel is StatusCtrl) { }
+            else if (WindowState != FormWindowState.Minimized)
+                Activate();
+        }
+
+        public void SetMessage(string text, UserControl okPanel = null, string okText = "OK")
         {
             if (this.InvokeRequired)
             {
-                this.BeginInvoke(new Action(delegate {
-                    SetMessage(text, okPanel, okText);
-                }));
-               
+                this.Invoke(new Action(() => SetMessage(text, okPanel, okText)));
+                return;
             }
-            else
-            {
-                OkButton.Text = okText;
-                LoadingLabel.Text = text;
-                SetPanel(LoadingPanel);
-                if (okPanel == null)
-                {
-                    OkButton.Visible = false;
-                }
-                else
-                {
-                    OkButton.Visible = true;
-                    OkSetPanel = okPanel;
-                }
-            }
+
+            var status = new StatusCtrl(this, okText, text, okPanel);
+            SetPanel(status);
         }
 
         public void SetOnline(string Text)
         {
-            this.BeginInvoke(new Action(delegate
+            this.Invoke(new Action(() => 
             {
-                OnlinePlayers.Text = Text;
+                if (CurrentPanel is LoggedCtrl)
+                {
+                    ((LoggedCtrl)CurrentPanel).OnlinePlayers.Text = Text;
+                }
             }));
         }
+
         public string ComputeSHA256(string input)
         {
             byte[] buffer2 = SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(input));
@@ -242,10 +245,6 @@ namespace Dz3n.MWO
                 return client.DownloadString(url);
             }
         }
-
-
-        
-        
         
         public void PingTool()
         {
@@ -262,9 +261,10 @@ namespace Dz3n.MWO
                     {
                         Ping pinger = new Ping();
                         PingReply reply = pinger.Send(Servers[server] + ".nfsmwo.xyz");
-                        ping = "(ping: " + reply.RoundtripTime + "ms)";
+
                         if (Lang == "uk") ping = "(пінг: " + reply.RoundtripTime + "мс)";
-                        if (Lang == "ru") ping = "(пинг: " + reply.RoundtripTime + "мс)";
+                        else if (Lang == "ru") ping = "(пинг: " + reply.RoundtripTime + "мс)";
+                        else ping = "(ping: " + reply.RoundtripTime + "ms)";
 
                         if (reply.RoundtripTime <= 0)
                         {
@@ -324,17 +324,15 @@ namespace Dz3n.MWO
         }
         public Form1()
         {
-#if !DEBUG
-            
-#endif
             Lang = Properties.Settings.Default.Language;
+
             if (Lang == "") 
             {
-                Lang = "en";
                 if (CultureInfo.InstalledUICulture.ToString().StartsWith("en")) Lang = "en";
                 else if (CultureInfo.InstalledUICulture.ToString().StartsWith("ru")) Lang = "ru";
                 else if (CultureInfo.InstalledUICulture.ToString().StartsWith("uk")) Lang = "uk";
                 else if (CultureInfo.InstalledUICulture.ToString().StartsWith("pl")) Lang = "pl";
+                else Lang = "en";
             }
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Lang);
@@ -343,28 +341,13 @@ namespace Dz3n.MWO
          
             InitializeComponent();
 
-
-            //if (System.Environment.OSVersion.Version.Major == 6 && (System.Environment.OSVersion.Version.Minor == 0 || System.Environment.OSVersion.Version.Minor == 1))
-            //{
-            //    if (Gay.DwmIsCompositionEnabled())
-            //    {
-            //        //FormBorderStyle = FormBorderStyle.None;
-            //        //int a = 50;
-            //        //Gay.Glass(this);
-            //        //PanelAeroBackground.Size = new Size(Size.Width - 5, Size.Height - 5);
-            //        PanelAeroBackground.BackColor = Color.FromArgb(21, 21, 21);
-            //        //ExitButton.Location = new Point(ExitButton.Location.X - 3, ExitButton.Location.Y - 3);
-            //    }
-            //}
-
-
+            Unlogged = new UnloggedCtrl(this);
 
             Icon = Properties.Resources.icon;
             flowLayoutPanel1.Visible = false;
 
             SetMessage("");
             PingLabel.Text = "";
-            OnlinePlayers.Text = "";
 
             ExitButton.BackColor = Color.Transparent;
 
@@ -372,15 +355,14 @@ namespace Dz3n.MWO
 
             LoadSettings();
             SetServer(server);
-
         }
 
         public void CheckToken()
         {
-            string wback = "Welcome back to MWO, " + LoginBox.Text + "!";
-            if (Lang == "ru") wback = "С возвращением в MWO, " + LoginBox.Text + "!";
-            if (Lang == "uk") wback = "З поверненням в MWO, " + LoginBox.Text + "!";
-            if (Lang == "pl") wback = "Witaj z powrotem w MWO, " + LoginBox.Text + "!";
+            string wback = "Welcome back to MWO, " + Unlogged.LoginBox.Text + "!";
+            if (Lang == "ru") wback = "С возвращением в MWO, " + Unlogged.LoginBox.Text + "!";
+            if (Lang == "uk") wback = "З поверненням в MWO, " + Unlogged.LoginBox.Text + "!";
+            if (Lang == "pl") wback = "Witaj z powrotem w MWO, " + Unlogged.LoginBox.Text + "!";
             SetMessage(wback);
 
             try
@@ -390,20 +372,20 @@ namespace Dz3n.MWO
                     new NameValueCollection()["token"] = AccessToken;
                     if (client.DownloadString("https://haont.ru/api/tokverify?ajax=1&target=mwo&token=" + AccessToken) == "true\n")
                     {
-                        SetPanel(LoggedInPanel);
+                        Invoke(new Action(() => { SetPanel(new LoggedCtrl(this)); }));
                     }
                     else
                     {
                         AccessToken = "";
                         SaveSettings();
-                        SetPanel(UnloggedPanel);
+                        SetPanel(Unlogged);
                     }
                 }
             }
             catch (Exception exception)
             {
                 AccessToken = "";
-                SetMessage("Token verification failed with an exception: " + exception.ToString(), UnloggedPanel);
+                SetMessage("Token verification failed with an exception: " + exception.ToString(), Unlogged);
                 //MessageBox.Show("Token verification failed with an exception: " + exception.ToString(), "Dz3n.MWO Error");
                 //SetPanel(UnloggedPanel);
             }
@@ -419,6 +401,7 @@ namespace Dz3n.MWO
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
+
         public bool CheckMWO()
         {
 #if DEBUG
@@ -450,7 +433,7 @@ namespace Dz3n.MWO
         public void SaveSettings()
         {
             Properties.Settings.Default.Language = Lang;
-            Properties.Settings.Default.Username = LoginBox.Text;
+            Properties.Settings.Default.Username = Unlogged.LoginBox.Text;
             Properties.Settings.Default.AccessToken = AccessToken;
             Properties.Settings.Default.ServerId = server;
             Properties.Settings.Default.Save();
@@ -458,7 +441,7 @@ namespace Dz3n.MWO
 
         public void LoadSettings()
         {
-            LoginBox.Text = Properties.Settings.Default.Username;
+            Unlogged.LoginBox.Text = Properties.Settings.Default.Username;
             AccessToken = Properties.Settings.Default.AccessToken;
             server = Properties.Settings.Default.ServerId;
         }
@@ -512,7 +495,6 @@ namespace Dz3n.MWO
 
         private void LauncherStart()
         {
-
             new Thread(PingTool).Start();
 
             if (AccessToken.Length >= 1)
@@ -522,7 +504,7 @@ namespace Dz3n.MWO
                 //WindowState = FormWindowState.Minimized;
                 new Thread(CheckToken).Start();
             }
-            else SetPanel(UnloggedPanel);
+            else SetPanel(Unlogged);
         }
 
         public bool CheckUpdates(bool ct = true)
@@ -555,7 +537,7 @@ namespace Dz3n.MWO
                     UpdateAv = String.Format("MWO {0} jest dostępne. Nie możesz grać w mwo, dopuki nie zainstalujesz aktualizacji.", latest);
                     UpdateBtn = "Aktualizacja";
                 }
-                SetMessage(UpdateAv, UpdatePanel, UpdateBtn);
+                // SetMessage(UpdateAv,, UpdateBtn);
                 return true;
             }
             return false;
@@ -618,7 +600,7 @@ namespace Dz3n.MWO
             Environment.Exit(0);
         }
 
-        private void PlayMWOLink_Click(object sender, EventArgs e)
+        public void PlayMWOLink_Click(object sender, EventArgs e)
         {
             try
             {
@@ -629,7 +611,7 @@ namespace Dz3n.MWO
                     if (Lang == "uk") m1 = "Сервер вимкнено! Будь-ласка, виберіть інший.";
                     if (Lang == "pl") m1 = "Serwer upadł! Proszę wybrać inny.";
                     // 
-                    SetMessage(m1, LoggedInPanel);
+                    SetMessage(m1, new LoggedCtrl(this));
                     //MessageBox.Show("The server is down!\nPlease choose another one.", "Dz3n.MWO Error");
                     return;
                 }
@@ -638,34 +620,37 @@ namespace Dz3n.MWO
                 {
                     StartInfo = { FileName = @".\speed.exe" }
                 };
-                string str = string.Format("-mwo {0} {1} {2}", Servers[server] + ".nfsmwo.xyz", LoginBox.Text, AccessToken);
+                string str = string.Format("-mwo {0} {1} {2}", Servers[server] + ".nfsmwo.xyz", Unlogged.LoginBox.Text, AccessToken);
                 process1.StartInfo.Arguments = str;
                 process1.Start();
 
                 string m = "Enjoy cats and drink weed";
+
                 if (Lang == "ru") m = "Наслаждайтесь котами и пейте траву";
-                if (Lang == "uk") m = "Насолоджуйтесь плаками та споживайте травичечку";
-                if (Lang == "pl") m = "Kochaj koty i pal zioło";
+                else if (Lang == "uk") m = "Насолоджуйтесь плаками та споживайте травичечку";
+                else if (Lang == "pl") m = "Kochaj koty i pal zioło";
+
                 SetMessage(m);
+
                 flowLayoutPanel1.Visible = false;
 
-                new Thread(ExitThr).Start();
+                new Thread(() => 
+                {
+                    Thread.Sleep(8000);
+                    Invoke(new Action(() => FormExit()));
+                }).Start();
             }
             catch (Exception ex)
             {
                 string m = "Failed to run MWO!\n" + ex.Message;
+
                 if (Lang == "ru") m = "Невозможно запустить MWO!\n" + ex.Message;
-                if (Lang == "uk") m = "Неможливо запустити MWO!\n" + ex.Message;
-                if (Lang == "pl") m = "Nie można uruchomić MWO!\n" + ex.Message;
-                SetMessage(m, LoggedInPanel);
+                else if (Lang == "uk") m = "Неможливо запустити MWO!\n" + ex.Message;
+                else if (Lang == "pl") m = "Nie można uruchomić MWO!\n" + ex.Message;
+
+                SetMessage(m, new LoggedCtrl(this));
             }
 
-        }
-
-        public void ExitThr()
-        {
-            Thread.Sleep(8000);
-            BeginInvoke(new Action(delegate { FormExit(); }));
         }
 
         private void ChangeLanguage(string lang)
@@ -674,25 +659,6 @@ namespace Dz3n.MWO
             {
                 ComponentResourceManager resources = new ComponentResourceManager(typeof(Form1));
                 resources.ApplyResources(c, c.Name, new CultureInfo(lang));
-            }
-        }
-
-        private void LogInButton_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            if (OkButton.Visible)
-            {
-                OkButton_LinkClicked(null, null);
-            }
-            else
-            {
-                if (AccessToken.Length >= 1)
-                {
-                    PlayMWOLink_Click(null, null);
-                }
-                else
-                {
-                    new Thread(LogInThread).Start();
-                }
             }
         }
 
@@ -707,10 +673,10 @@ namespace Dz3n.MWO
         public void LogInThread()
         {
 
-            string m = LoginBox.Text + " is hacking the Pentagon now...";
-            if (Lang == "ru") m = LoginBox.Text + " сейчас взламывает Пентагон...";
-            if (Lang == "uk") m = LoginBox.Text + " наразі зламує Пентагон...";
-            if (Lang == "pl") m = LoginBox.Text + " właśnie hakuje Pentagon...";
+            string m = Unlogged.LoginBox.Text + " is hacking the Pentagon now...";
+            if (Lang == "ru") m = Unlogged.LoginBox.Text + " сейчас взламывает Пентагон...";
+            if (Lang == "uk") m = Unlogged.LoginBox.Text + " наразі зламує Пентагон...";
+            if (Lang == "pl") m = Unlogged.LoginBox.Text + " właśnie hakuje Pentagon...";
             SetMessage(m);
 
             if (CheckUpdates(false)) return;
@@ -719,14 +685,14 @@ namespace Dz3n.MWO
                 using (WebClient client = new WebClient())
                 {
                     NameValueCollection data = new NameValueCollection();
-                    data["login"] = LoginBox.Text;
-                    data["password"] = PwdBox.Text;
+                    data["login"] = Unlogged.LoginBox.Text;
+                    data["password"] = Unlogged.PwdBox.Text;
                     byte[] bytes = client.UploadValues("https://haont.ru/api/auth?ajax=1&target=mwo", "POST", data);
                     char[] separator = new char[] { ' ' };
                     string[] strArray = Encoding.UTF8.GetString(bytes).Split(separator);
                     if (Convert.ToInt32(strArray[0]) == 0)
                     {
-                        SetMessage("Sign-in failed: " + StrFromArray(strArray), UnloggedPanel);
+                        SetMessage("Sign-in failed: " + StrFromArray(strArray), Unlogged);
                         //MessageBox.Show(, "Dz3n.MWO Error");
                         AccessToken = "";
                         //SetPanel(UnloggedPanel);
@@ -737,7 +703,7 @@ namespace Dz3n.MWO
             }
             catch (Exception exception)
             {
-                SetMessage("Sign-in failed with an exception: " + exception.ToString(), UnloggedPanel);
+                SetMessage("Sign-in failed with an exception: " + exception.ToString(), Unlogged);
                 //MessageBox.Show("Sign-in failed with an exception: " + exception.ToString(), "Dz3n.MWO Error");
                 //SetPanel(UnloggedPanel);
             }
@@ -761,22 +727,22 @@ namespace Dz3n.MWO
                 }
                 else
                 {
-                    SetMessage("Unknown error", UnloggedPanel);
+                    SetMessage("Unknown error", Unlogged);
                 }
             }
             else
             {
                 
-                SetPanel(LoggedInPanel);
+                SetPanel(new LoggedCtrl(this));
                 SaveSettings();
             }
             LogInTimes = 0;
         }
 
-        private void LogoutLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        public void LogoutLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             AccessToken = "";
-            SetPanel(UnloggedPanel);
+            SetPanel(Unlogged);
             flowLayoutPanel1.Visible = false;
             new Thread(Unlog).Start();
             SaveSettings();
@@ -808,7 +774,7 @@ namespace Dz3n.MWO
 
         private void SingUpButton_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new Process { StartInfo = { FileName = "https://haont.ru/api/register" } }.Start();
+            
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -824,14 +790,10 @@ namespace Dz3n.MWO
 
         private void OnlinePlayers_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(String.Format("https://{0}.haont.ru/mwo/mon", Servers[server]));
         }
 
         private void OkButton_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (OkSetPanel == UpdatePanel) StartUpdate();
-            SetPanel(OkSetPanel);
-            OkSetPanel = null;
         }
 
         public void StartUpdate()
@@ -845,7 +807,7 @@ namespace Dz3n.MWO
 
         private void UpdateProgress(object sender, DownloadProgressChangedEventArgs e)
         {
-            UpdProgress.Value = e.ProgressPercentage;
+            // UpdProgress.Value = e.ProgressPercentage;
         }
 
         private void UpdateCompleted(object sender, AsyncCompletedEventArgs e)

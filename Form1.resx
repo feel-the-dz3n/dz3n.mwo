@@ -162,9 +162,6 @@
   <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;WindowBorder2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
   <data name="&gt;&gt;PwdBox.Parent" xml:space="preserve">
     <value>UnloggedPanel</value>
   </data>
@@ -235,7 +232,10 @@
     <value>UnloggedPanel</value>
   </data>
   <data name="&gt;&gt;PanelAeroBackground.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>8</value>
+  </data>
+  <data name="ChangeSrv.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 0</value>
   </data>
   <data name="PlayMWOLink.ToolTip" xml:space="preserve">
     <value />
@@ -276,8 +276,14 @@
   <data name="ChangeSrv.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>433, 32</value>
+  </data>
   <data name="LogInButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Semibold, 12pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;ChangeSrv.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 43</value>
@@ -365,9 +371,6 @@
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="pictureBox2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="UnloggedPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>440, 77</value>
@@ -459,9 +462,6 @@
   <data name="&gt;&gt;OnlinePlayers.Name" xml:space="preserve">
     <value>OnlinePlayers</value>
   </data>
-  <data name="&gt;&gt;LogoutLink.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="UpdProgress.Size" type="System.Drawing.Size, System.Drawing">
     <value>429, 23</value>
   </data>
@@ -477,8 +477,8 @@
   <data name="&gt;&gt;panel1.Name" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>433, 32</value>
+  <data name="&gt;&gt;LogoutLink.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;LoadingLabel.Parent" xml:space="preserve">
     <value>LoadingPanel</value>
@@ -535,7 +535,7 @@
     <value>Play MWO</value>
   </data>
   <data name="&gt;&gt;linkLabel1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="OkButton.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -552,8 +552,8 @@
   <data name="label3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;WindowBorder.Name" xml:space="preserve">
-    <value>WindowBorder</value>
+  <data name="&gt;&gt;WindowBorder2.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;PwdBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -589,7 +589,7 @@
     <value />
   </data>
   <data name="&gt;&gt;pictureBox2.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;LoginBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -685,7 +685,7 @@
     <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;WindowBorder2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="OkButton.ToolTip" xml:space="preserve">
     <value />
@@ -786,9 +786,6 @@
   <data name="SingUpButton.Text" xml:space="preserve">
     <value>Sign Up</value>
   </data>
-  <data name="PwdBox.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
   <data name="UpdatePanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>440, 77</value>
   </data>
@@ -828,6 +825,9 @@
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
+  <data name="LogoutLink.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
   <data name="&gt;&gt;LoggedInPanel.Name" xml:space="preserve">
     <value>LoggedInPanel</value>
   </data>
@@ -845,9 +845,6 @@
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;OnlinePlayers.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="UpdatePanel.ToolTip" xml:space="preserve">
     <value />
@@ -883,7 +880,7 @@
     <value />
   </data>
   <data name="&gt;&gt;WindowBorder.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>4</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Server:</value>
@@ -907,7 +904,10 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;WindowBorder.Name" xml:space="preserve">
+    <value>WindowBorder</value>
   </data>
   <data name="UpdatePanel.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -927,7 +927,7 @@
   <data name="&gt;&gt;LogoutLink.Name" xml:space="preserve">
     <value>LogoutLink</value>
   </data>
-  <data name="&gt;&gt;ChangeSrv.Type" xml:space="preserve">
+  <data name="&gt;&gt;OnlinePlayers.Type" xml:space="preserve">
     <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LogInButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
@@ -985,7 +985,7 @@
     <value>187, 26</value>
   </data>
   <data name="&gt;&gt;ExitButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;OkButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1045,13 +1045,13 @@
     <value>LoadingLabel</value>
   </data>
   <data name="&gt;&gt;BorderOfPanel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>7</value>
   </data>
   <data name="linkLabel1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 11pt</value>
   </data>
-  <data name="ChangeSrv.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 0</value>
+  <data name="PwdBox.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
   </data>
   <data name="&gt;&gt;linkLabel1.Name" xml:space="preserve">
     <value>linkLabel1</value>
@@ -1077,14 +1077,14 @@
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>248, 9</value>
   </data>
-  <data name="LogoutLink.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="pictureBox2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;linkLabel2.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;ExitButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1111,7 +1111,7 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>pl</value>
+    <value>en</value>
   </metadata>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

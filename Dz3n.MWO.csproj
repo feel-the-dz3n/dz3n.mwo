@@ -59,6 +59,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Gay.cs" />
+    <Compile Include="LoggedCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoggedCtrl.Designer.cs">
+      <DependentUpon>LoggedCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MoreWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,7 +72,25 @@
       <DependentUpon>MoreWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProgressCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProgressCtrl.Designer.cs">
+      <DependentUpon>ProgressCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatusCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StatusCtrl.Designer.cs">
+      <DependentUpon>StatusCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnloggedCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnloggedCtrl.Designer.cs">
+      <DependentUpon>UnloggedCtrl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.af.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +109,18 @@
     <EmbeddedResource Include="Form1.uk.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoggedCtrl.pl.resx">
+      <DependentUpon>LoggedCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoggedCtrl.resx">
+      <DependentUpon>LoggedCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoggedCtrl.ru.resx">
+      <DependentUpon>LoggedCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoggedCtrl.uk.resx">
+      <DependentUpon>LoggedCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MoreWindow.pl.resx">
       <DependentUpon>MoreWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +133,12 @@
     <EmbeddedResource Include="MoreWindow.uk.resx">
       <DependentUpon>MoreWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProgressCtrl.en.resx">
+      <DependentUpon>ProgressCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressCtrl.resx">
+      <DependentUpon>ProgressCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -107,6 +149,24 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StatusCtrl.resx">
+      <DependentUpon>StatusCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnloggedCtrl.en.resx">
+      <DependentUpon>UnloggedCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnloggedCtrl.pl.resx">
+      <DependentUpon>UnloggedCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnloggedCtrl.resx">
+      <DependentUpon>UnloggedCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnloggedCtrl.ru.resx">
+      <DependentUpon>UnloggedCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnloggedCtrl.uk.resx">
+      <DependentUpon>UnloggedCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">

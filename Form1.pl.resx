@@ -183,7 +183,7 @@
     <value>Zaloguj się</value>
   </data>
   <data name="UnloggedPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>494, 77</value>
+    <value>487, 68</value>
   </data>
   <data name="LoadingLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 3</value>
