@@ -28,7 +28,8 @@ namespace Dz3n.MWO
         public static bool ServerIsOkay = false;
         public static string AccessToken = "";
         public static string[] Servers = { "US", "RU", "EU" };
-        public static int server = 2;
+        public static string ServerHost = "haont.ru";
+        public static int server = 1;
         public static Point panelLocation = new Point(41, 0/*142*/);
         public static Size panelSize = new Size(440, 77);
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -260,7 +261,7 @@ namespace Dz3n.MWO
                     try
                     {
                         Ping pinger = new Ping();
-                        PingReply reply = pinger.Send(Servers[server] + ".nfsmwo.xyz");
+                        PingReply reply = pinger.Send(Servers[server] + "." + ServerHost);
 
                         if (Lang == "uk") ping = "(пінг: " + reply.RoundtripTime + "мс)";
                         else if (Lang == "ru") ping = "(пинг: " + reply.RoundtripTime + "мс)";
@@ -278,7 +279,7 @@ namespace Dz3n.MWO
                         ServerIsOkay = false;
                     }
 
-                    if (!ForceCloseForm) PingLabel.BeginInvoke(new Action(delegate { PingLabel.Text = ping; }));
+                    if (!ForceCloseForm) PingLabel.Invoke(new Action(() => PingLabel.Text = ping));
 
                     if (ServerIsOkay)
                     {
@@ -296,8 +297,8 @@ namespace Dz3n.MWO
                             else
                             {
                                 player = "Monitoring unavailable";
-                                if (Lang == "ru") player = "Мониторинг недоступен";
-                                if (Lang == "uk") player = "Моніторинг недоступний";
+                                if (Lang == "ru") player = "Мониторинг не доступен";
+                                if (Lang == "uk") player = "Моніторинг не доступний";
                                 if (Lang == "pl") player = "Monitoring nie dostępny";
                             }
                         }
