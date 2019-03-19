@@ -118,25 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="LogoutLink.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 15</value>
-  </data>
-  <data name="LogoutLink.Text" xml:space="preserve">
-    <value>Вийти з аккаунту...</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="OnlinePlayers.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="PlayMWOLink.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="PlayMWOLink.Text" xml:space="preserve">
-    <value>Поїхали!</value>
-  </data>
-  <data name="LoggedInPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 142</value>
-  </data>
   <data name="ChangeSrv.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 0</value>
   </data>
@@ -152,6 +133,9 @@
   <data name="PingLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>95, 0</value>
   </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 20</value>
+  </data>
   <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>423, 238</value>
   </data>
@@ -164,31 +148,13 @@
   <data name="linkLabel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>357, 238</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Ви повинні мати аккаунт Haont для того, щоб грати в MWO</value>
+  <data name="linkProblems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>261, 238</value>
   </data>
-  <data name="SingUpButton.Text" xml:space="preserve">
-    <value>Реєстрація</value>
+  <data name="linkProblems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 20</value>
   </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 15</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Пароль:</value>
-  </data>
-  <data name="LogInButton.Text" xml:space="preserve">
-    <value>Вхід</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Логін:</value>
-  </data>
-  <data name="UnloggedPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 55</value>
-  </data>
-  <data name="LoadingPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>496, 142</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Завтаження інсталляції MWO</value>
+  <data name="linkProblems.Text" xml:space="preserve">
+    <value>Проблеми?</value>
   </data>
 </root>

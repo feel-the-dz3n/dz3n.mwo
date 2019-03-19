@@ -43,6 +43,7 @@
             this.BorderOfPanel = new System.Windows.Forms.Panel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.PanelAeroBackground = new System.Windows.Forms.Panel();
+            this.linkProblems = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -163,11 +164,22 @@
             this.PanelAeroBackground.Name = "PanelAeroBackground";
             this.toolTip.SetToolTip(this.PanelAeroBackground, resources.GetString("PanelAeroBackground.ToolTip"));
             // 
+            // linkProblems
+            // 
+            resources.ApplyResources(this.linkProblems, "linkProblems");
+            this.linkProblems.ActiveLinkColor = System.Drawing.Color.White;
+            this.linkProblems.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.linkProblems.Name = "linkProblems";
+            this.linkProblems.TabStop = true;
+            this.toolTip.SetToolTip(this.linkProblems, resources.GetString("linkProblems.ToolTip"));
+            this.linkProblems.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkProblems_LinkClicked);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Controls.Add(this.linkProblems);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.WindowBorder2);
             this.Controls.Add(this.linkLabel1);
@@ -210,6 +222,7 @@
         private System.Windows.Forms.Panel BorderOfPanel;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Panel PanelAeroBackground;
+        private System.Windows.Forms.LinkLabel linkProblems;
     }
 }
 

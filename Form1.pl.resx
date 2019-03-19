@@ -118,27 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="LogoutLink.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 15</value>
-  </data>
-  <data name="LogoutLink.Text" xml:space="preserve">
-    <value>Wyloguj się</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="PlayMWOLink.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="PlayMWOLink.Text" xml:space="preserve">
-    <value>Zagraj!</value>
-  </data>
-  <data name="LoggedInPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 142</value>
-  </data>
   <data name="ChangeSrv.Location" type="System.Drawing.Point, System.Drawing">
     <value>62, 0</value>
   </data>
   <data name="ChangeSrv.ToolTip" xml:space="preserve">
     <value>Naciśnij aby zmienić serwer.</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 20</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 20</value>
@@ -161,37 +148,13 @@
   <data name="linkLabel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>361, 238</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Konto haunt jest wymagane aby zagrać w MWO</value>
+  <data name="linkProblems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>277, 238</value>
   </data>
-  <data name="SingUpButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Semibold, 8pt, style=Bold</value>
+  <data name="linkProblems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 20</value>
   </data>
-  <data name="SingUpButton.Text" xml:space="preserve">
-    <value>ZAREJESTRUJ SIĘ</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 15</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Hasło:</value>
-  </data>
-  <data name="LogInButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="LogInButton.Text" xml:space="preserve">
-    <value>Zaloguj się</value>
-  </data>
-  <data name="UnloggedPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 68</value>
-  </data>
-  <data name="LoadingLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 3</value>
-  </data>
-  <data name="LoadingPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>511, 167</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Pobieranie installatora MWO</value>
+  <data name="linkProblems.Text" xml:space="preserve">
+    <value>Problemy?</value>
   </data>
 </root>

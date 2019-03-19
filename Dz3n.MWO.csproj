@@ -7,7 +7,7 @@
     <ProjectGuid>{FB1F70E6-3102-49B2-B192-AC96AF7886A6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Dz3n.MWO</RootNamespace>
-    <AssemblyName>Dz3n.MWO</AssemblyName>
+    <AssemblyName>MostWantedOnline</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

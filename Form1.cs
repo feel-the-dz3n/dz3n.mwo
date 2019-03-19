@@ -342,6 +342,8 @@ namespace Dz3n.MWO
          
             InitializeComponent();
 
+            linkProblems.Visible = File.Exists("MWO-Diagnostic.exe");
+
             Unlogged = new UnloggedCtrl(this);
 
             Icon = Properties.Resources.icon;
@@ -687,7 +689,7 @@ namespace Dz3n.MWO
                 {
                     NameValueCollection data = new NameValueCollection();
                     data["login"] = Unlogged.LoginBox.Text;
-                    data["password"] = Unlogged.PwdBox.Text;
+                    data["password"] = /*ComputeSHA256(*/Unlogged.PwdBox.Text;//);
                     byte[] bytes = client.UploadValues("https://haont.ru/api/auth?ajax=1&target=mwo", "POST", data);
                     char[] separator = new char[] { ' ' };
                     string[] strArray = Encoding.UTF8.GetString(bytes).Split(separator);
@@ -733,8 +735,7 @@ namespace Dz3n.MWO
             }
             else
             {
-                
-                SetPanel(new LoggedCtrl(this));
+                Invoke(new Action(() => SetPanel(new LoggedCtrl(this))));
                 SaveSettings();
             }
             LogInTimes = 0;
@@ -855,6 +856,12 @@ namespace Dz3n.MWO
             //ForceCloseForm = true;
             //this.Close();
             Environment.Exit(0);
+        }
+
+        private void linkProblems_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (File.Exists("MWO-Diagnostic.exe"))
+                Process.Start("MWO-Diagnostic.exe");
         }
     }
 }

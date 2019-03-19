@@ -123,37 +123,10 @@
   <data name="WindowBorder.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="LoggedAsLabel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="LogoutLink.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 15</value>
-  </data>
-  <data name="LogoutLink.Text" xml:space="preserve">
-    <value>Выйти из аккаунта...</value>
-  </data>
-  <data name="LogoutLink.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="OnlinePlayers.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="PlayMWOLink.Text" xml:space="preserve">
-    <value>Играть!</value>
-  </data>
-  <data name="PlayMWOLink.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LoggedInPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 142</value>
-  </data>
-  <data name="LoggedInPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="WindowBorder2.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ChangeSrv.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 0</value>
   </data>
@@ -174,6 +147,9 @@
   </data>
   <data name="PingLabel.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 20</value>
   </data>
   <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
     <value />
@@ -196,69 +172,6 @@
   <data name="linkLabel2.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Вам нужно иметь аккаунт Haont чтобы играть в MWO</value>
-  </data>
-  <data name="label7.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="SingUpButton.Text" xml:space="preserve">
-    <value>Регистрация</value>
-  </data>
-  <data name="SingUpButton.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 15</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Пароль:</value>
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="PwdBox.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LoginBox.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LogInButton.Text" xml:space="preserve">
-    <value>Войти</value>
-  </data>
-  <data name="LogInButton.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 15</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Логин:</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="UnloggedPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>498, 142</value>
-  </data>
-  <data name="UnloggedPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="OkButton.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LoadingLabel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LoadingPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>512, 55</value>
-  </data>
-  <data name="LoadingPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="pictureBox2.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -268,16 +181,16 @@
   <data name="PanelAeroBackground.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="UpdProgress.ToolTip" xml:space="preserve">
-    <value />
+  <data name="linkProblems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>254, 238</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Загрузка установщика MWO</value>
+  <data name="linkProblems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 20</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="linkProblems.Text" xml:space="preserve">
+    <value>Проблемы?</value>
   </data>
-  <data name="UpdatePanel.ToolTip" xml:space="preserve">
+  <data name="linkProblems.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
