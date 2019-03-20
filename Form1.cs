@@ -20,6 +20,7 @@ namespace Dz3n.MWO
 {
     public partial class Form1 : Form
     {
+        public static string Me = System.Reflection.Assembly.GetExecutingAssembly().Location;
         public static bool FirstPing = true;
         public static bool ForceCloseForm = false;
         public static string Lang = "en";
@@ -823,35 +824,11 @@ namespace Dz3n.MWO
             Environment.Exit(0);
         }
 
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            Lang = "en";
-            SaveSettings();
-            Process.Start("Dz3n.MWO.exe");
-            Environment.Exit(0);
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            Lang = "ru";
-            SaveSettings();
-            Process.Start("Dz3n.MWO.exe");
-            Environment.Exit(0);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Lang = "uk";
-            SaveSettings();
-            Process.Start("Dz3n.MWO.exe");
-            Environment.Exit(0);
-        }
-
         public void SetLang(string l)
         {
             Lang = l;
             SaveSettings();
-            Process.Start("Dz3n.MWO.exe");
+            Process.Start(Me);
             //new Form1().Show();
             //ForceCloseForm = true;
             //this.Close();
