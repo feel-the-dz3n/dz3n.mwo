@@ -52,13 +52,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FastDiagnostic.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gay.cs" />
     <Compile Include="LoggedCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -85,6 +85,11 @@
     <Compile Include="StatusCtrl.Designer.cs">
       <DependentUpon>StatusCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Translation\AvailableTranslations.cs" />
+    <Compile Include="Translation\Builder.cs" />
+    <Compile Include="Translation\Translation.cs" />
+    <Compile Include="Translation\TranslationElement.cs" />
+    <Compile Include="Translation\WinFormsExtension.cs" />
     <Compile Include="UnloggedCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>

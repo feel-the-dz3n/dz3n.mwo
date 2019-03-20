@@ -58,14 +58,15 @@
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
-            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(227)))));
             this.label7.Name = "label7";
             // 
             // SingUpButton
             // 
             resources.ApplyResources(this.SingUpButton, "SingUpButton");
             this.SingUpButton.ActiveLinkColor = System.Drawing.Color.White;
-            this.SingUpButton.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(113)))));
+            this.SingUpButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(177)))), ((int)(((byte)(137)))));
+            this.SingUpButton.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(242)))), ((int)(((byte)(125)))));
             this.SingUpButton.Name = "SingUpButton";
             this.SingUpButton.TabStop = true;
             this.SingUpButton.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SingUpButton_LinkClicked);
@@ -79,24 +80,30 @@
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
-            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(227)))));
             this.label5.Name = "label5";
             // 
             // PwdBox
             // 
             resources.ApplyResources(this.PwdBox, "PwdBox");
+            this.PwdBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.PwdBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PwdBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(227)))));
             this.PwdBox.Name = "PwdBox";
             // 
             // LoginBox
             // 
             resources.ApplyResources(this.LoginBox, "LoginBox");
+            this.LoginBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.LoginBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LoginBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(227)))));
             this.LoginBox.Name = "LoginBox";
             // 
             // LogInButton
             // 
             resources.ApplyResources(this.LogInButton, "LogInButton");
             this.LogInButton.ActiveLinkColor = System.Drawing.Color.White;
-            this.LogInButton.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(113)))));
+            this.LogInButton.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(242)))), ((int)(((byte)(125)))));
             this.LogInButton.Name = "LogInButton";
             this.LogInButton.TabStop = true;
             this.LogInButton.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogInButton_LinkClicked);
@@ -104,7 +111,7 @@
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
-            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(227)))));
             this.label4.Name = "label4";
             // 
             // UnloggedCtrl

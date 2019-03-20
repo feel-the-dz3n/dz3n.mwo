@@ -15,15 +15,17 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using static DotNetTranslator.WinFormsExtension;
 
 namespace Dz3n.MWO
 {
     public partial class Form1 : Form
     {
+        FastDiagnostic FastDiag;
         public static string Me = System.Reflection.Assembly.GetExecutingAssembly().Location;
         public static bool FirstPing = true;
         public static bool ForceCloseForm = false;
-        public static string Lang = "en";
+        public static string Lang => Program.Translation.SelectedTranslation.Locale.Split('-')[0];
         public static Color PanelDefault = Color.FromArgb(28, 28, 28);
         public static int LogInTimes = 0;
         public static bool ServerIsOkay = false;
@@ -42,116 +44,7 @@ namespace Dz3n.MWO
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
-
-        #region DWM
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-   (
-       int nLeftRect, // x-coordinate of upper-left corner
-       int nTopRect, // y-coordinate of upper-left corner
-       int nRightRect, // x-coordinate of lower-right corner
-       int nBottomRect, // y-coordinate of lower-right corner
-       int nWidthEllipse, // height of ellipse
-       int nHeightEllipse // width of ellipse
-    );
-
-        [DllImport("dwmapi.dll")]
-        public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
-
-        [DllImport("dwmapi.dll")]
-        public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
-
-        [DllImport("dwmapi.dll")]
-        public static extern int DwmIsCompositionEnabled(ref int pfEnabled);
-
-        private bool m_aeroEnabled;                     // variables for box shadow
-        private const int CS_DROPSHADOW = 0x00020000;
-        private const int WM_NCPAINT = 0x0085;
-        private const int WM_ACTIVATEAPP = 0x001C;
-
-        public struct MARGINS                           // struct for box shadow
-        {
-            public int leftWidth;
-            public int rightWidth;
-            public int topHeight;
-            public int bottomHeight;
-        }
-
-        private const int WM_NCHITTEST = 0x84;          // variables for dragging the form
-        private const int HTCLIENT = 0x1;
-        private const int HTCAPTION = 0x2;
-
-        //protected override CreateParams CreateParams
-        //{
-        //    get
-        //    {
-        //        m_aeroEnabled = CheckAeroEnabled();
-
-        //        CreateParams cp = base.CreateParams;
-        //        if (!m_aeroEnabled)
-        //            cp.ClassStyle |= CS_DROPSHADOW;
-
-        //        return cp;
-        //    }
-        //}
-        public class ShadowedForm : Form
-        {
-            protected override CreateParams CreateParams
-            {
-                get
-                {
-                    const int CS_DROPSHADOW = 0x20000;
-                    CreateParams cp = base.CreateParams;
-                    cp.ClassStyle |= CS_DROPSHADOW;
-                    return cp;
-                }
-            }
-
-            // ... other code ...
-        }
-
-        private bool CheckAeroEnabled()
-        {
-            if (Environment.OSVersion.Version.Major >= 6)
-            {
-                int enabled = 0;
-                DwmIsCompositionEnabled(ref enabled);
-                return (enabled == 1) ? true : false;
-            }
-            return false;
-        }
-
-        protected override void WndProc(ref Message m)
-        {
-            switch (m.Msg)
-            {
-                case WM_NCPAINT:                        // box shadow
-                    if (m_aeroEnabled)
-                    {
-                        var v = 2;
-                        DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
-                        MARGINS margins = new MARGINS()
-                        {
-                            bottomHeight = 1,
-                            leftWidth = 1,
-                            rightWidth = 1,
-                            topHeight = 1
-                        };
-                        DwmExtendFrameIntoClientArea(this.Handle, ref margins);
-
-                    }
-                    break;
-                default:
-                    break;
-            }
-            base.WndProc(ref m);
-
-            if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
-                m.Result = (IntPtr)HTCAPTION;
-
-        }
-        #endregion
-
+        
         private UserControl currentPanel = null;
         public UserControl CurrentPanel
         {
@@ -183,6 +76,7 @@ namespace Dz3n.MWO
             currentPanel = panel;
             currentPanel.Visible = true;
             currentPanel.Location = panelLocation;
+            currentPanel.UpdateTranslation(Program.Translation);
             // currentPanel.Size = panelSize;
             
             if (panel is LoggedCtrl)
@@ -217,6 +111,8 @@ namespace Dz3n.MWO
             var status = new StatusCtrl(this, okText, text, okPanel);
             SetPanel(status);
         }
+
+        public string t(string element) => Program.Translation.Get(element);
 
         public void SetOnline(string Text)
         {
@@ -280,7 +176,7 @@ namespace Dz3n.MWO
                         ServerIsOkay = false;
                     }
 
-                    if (!ForceCloseForm) PingLabel.Invoke(new Action(() => PingLabel.Text = ping));
+                    if (!ForceCloseForm) labelPing.Invoke(new Action(() => labelPing.Text = ping));
 
                     if (ServerIsOkay)
                     {
@@ -290,33 +186,21 @@ namespace Dz3n.MWO
                             string s = this.RequestStringHTTP("https://" + Servers[server] + ".haont.ru/mwo/online.dat?ajax=1");
                             if (int.TryParse(s, out num))
                             {
-                                player = s + " players online";
-                                if (Lang == "ru") player = s + " игроков онлайн";
-                                if (Lang == "uk") player = s + " гравців онлайн";
-                                if (Lang == "pl") player = s + " gracz(y/ów) online";
+                                player = t("Players Online").Replace("{0}", s);
                             }
                             else
                             {
-                                player = "Monitoring unavailable";
-                                if (Lang == "ru") player = "Мониторинг не доступен";
-                                if (Lang == "uk") player = "Моніторинг не доступний";
-                                if (Lang == "pl") player = "Monitoring nie dostępny";
+                                player = t("Monitoring unavailable");
                             }
                         }
                         catch
                         {
-                            player = "Problems with connection";
-                            if (Lang == "ru") player = "Проблемы с соединением";
-                            if (Lang == "uk") player = "Проблеми зі з'єднанням";
-                            if (Lang == "pl") player = "Problemy z połączeniem";
+                            player = t("ConnectionProblems");
                         }
                     }
                     else
                     {
-                        player = "Server is offline";
-                        if (Lang == "ru") player = "Сервер выключен";
-                        if (Lang == "uk") player = "Сервер вимкнено";
-                        if (Lang == "pl") player = "Serwer jest nie dostępny";
+                        player = t("ServerOffline");
                     }
 
                     if (!ForceCloseForm) SetOnline(player);
@@ -324,24 +208,20 @@ namespace Dz3n.MWO
                 Thread.Sleep(2000);
             }
         }
+
         public Form1()
         {
-            Lang = Properties.Settings.Default.Language;
-
-            if (Lang == "") 
-            {
-                if (CultureInfo.InstalledUICulture.ToString().StartsWith("en")) Lang = "en";
-                else if (CultureInfo.InstalledUICulture.ToString().StartsWith("ru")) Lang = "ru";
-                else if (CultureInfo.InstalledUICulture.ToString().StartsWith("uk")) Lang = "uk";
-                else if (CultureInfo.InstalledUICulture.ToString().StartsWith("pl")) Lang = "pl";
-                else Lang = "en";
-            }
-
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Lang);
-            m_aeroEnabled = false;
-
-         
             InitializeComponent();
+
+            FastDiag = new FastDiagnostic(new FileInfo(Me).Directory.FullName, this);
+
+            Program.Translation.SelectedTranslationChanged += (source) =>
+            {
+                this.UpdateTranslation(source);
+                if (CurrentPanel != null)
+                    CurrentPanel.UpdateTranslation(source);
+            };
+            this.UpdateTranslation(Program.Translation);
 
             linkProblems.Visible = File.Exists("MWO-Diagnostic.exe");
 
@@ -351,11 +231,11 @@ namespace Dz3n.MWO
             flowLayoutPanel1.Visible = false;
 
             SetMessage("");
-            PingLabel.Text = "";
+            labelPing.Text = "";
 
             ExitButton.BackColor = Color.Transparent;
 
-            BorderOfPanel.Size = new Size(522, 77);
+            // BorderOfPanel.Size = new Size(522, 77);
 
             LoadSettings();
             SetServer(server);
@@ -363,11 +243,7 @@ namespace Dz3n.MWO
 
         public void CheckToken()
         {
-            string wback = "Welcome back to MWO, " + Unlogged.LoginBox.Text + "!";
-            if (Lang == "ru") wback = "С возвращением в MWO, " + Unlogged.LoginBox.Text + "!";
-            if (Lang == "uk") wback = "З поверненням в MWO, " + Unlogged.LoginBox.Text + "!";
-            if (Lang == "pl") wback = "Witaj z powrotem w MWO, " + Unlogged.LoginBox.Text + "!";
-            SetMessage(wback);
+            SetMessage(t("Welcome").Replace("{0}", Unlogged.LoginBox.Text));
 
             try
             {
@@ -436,7 +312,7 @@ namespace Dz3n.MWO
 
         public void SaveSettings()
         {
-            Properties.Settings.Default.Language = Lang;
+            Properties.Settings.Default.Language = Program.Translation.SelectedLocale;
             Properties.Settings.Default.Username = Unlogged.LoginBox.Text;
             Properties.Settings.Default.AccessToken = AccessToken;
             Properties.Settings.Default.ServerId = server;
@@ -524,23 +400,8 @@ namespace Dz3n.MWO
             //return true;
             if (latest != fileVersion)
             {
-                string UpdateBtn = "Update";
-                string UpdateAv = String.Format("MWO {0} is available. You can't play until you update MWO.", latest);
-                if (Lang == "ru")
-                {
-                    UpdateAv = String.Format("Доступен MWO {0}. Вы не можете играть, пока не обновите MWO.", latest);
-                    UpdateBtn = "Обновить";
-                }
-                if (Lang == "uk")
-                {
-                    UpdateAv = String.Format("Доступний MWO {0}. Ви не можете грати, поки не оновите MWO.", latest);
-                    UpdateBtn = "Оновити";
-                }
-                if (Lang == "pl")
-                {
-                    UpdateAv = String.Format("MWO {0} jest dostępne. Nie możesz grać w mwo, dopuki nie zainstalujesz aktualizacji.", latest);
-                    UpdateBtn = "Aktualizacja";
-                }
+                string UpdateBtn = t("UpdateButton");
+                string UpdateAv = t("UpdateText").Replace("{0}", latest);
                 // SetMessage(UpdateAv,, UpdateBtn);
                 return true;
             }
@@ -550,15 +411,23 @@ namespace Dz3n.MWO
         private void Form1_Activated(object sender, EventArgs e)
         {
             BackColor = Color.FromArgb(20, 20, 20);
-            WindowBorder.BackColor = Color.Transparent;// Color.FromArgb(80, 80, 80);
-            WindowBorder2.BackColor = Color.Transparent;// Color.FromArgb(80, 80, 80);
+
+            var border = Color.FromArgb(80, 80, 80);
+
+            WindowBorderBottom.BackColor = border;
+            WindowBorderTop.BackColor = border;
+            WindowBorderLeft.BackColor = border;
+            WindowBorderRight.BackColor = border;
         }
 
         private void Form1_Deactivate(object sender, EventArgs e)
         {
             BackColor = PanelDefault;
-            WindowBorder.BackColor = Color.Transparent;
-            WindowBorder2.BackColor = Color.Transparent;
+
+            //WindowBorderBottom.BackColor = Color.Transparent;
+            //WindowBorderTop.BackColor = Color.Transparent;
+            //WindowBorderLeft.BackColor = Color.Transparent;
+            //WindowBorderRight.BackColor = Color.Transparent;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -585,7 +454,7 @@ namespace Dz3n.MWO
         public void SetServer(int serv)
         {
             server = serv;
-            ChangeSrv.Text = Servers[serv];
+            linkServer.Text = Servers[serv];
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -610,10 +479,7 @@ namespace Dz3n.MWO
             {
                 if (!ServerIsOkay)
                 {
-                    string m1 = "The server is down! Please choose another one.";
-                    if (Lang == "ru") m1 = "Сервер выключен! Пожалуйста, выберите другой.";
-                    if (Lang == "uk") m1 = "Сервер вимкнено! Будь-ласка, виберіть інший.";
-                    if (Lang == "pl") m1 = "Serwer upadł! Proszę wybrać inny.";
+                    string m1 = t("ServerOfflineError");
                     // 
                     SetMessage(m1, new LoggedCtrl(this));
                     //MessageBox.Show("The server is down!\nPlease choose another one.", "Dz3n.MWO Error");
@@ -826,13 +692,13 @@ namespace Dz3n.MWO
 
         public void SetLang(string l)
         {
-            Lang = l;
+            Program.Translation.SelectedTranslation = Program.Translation.GetTranslation(l);
             SaveSettings();
-            Process.Start(Me);
+            // Process.Start(Me);
             //new Form1().Show();
             //ForceCloseForm = true;
             //this.Close();
-            Environment.Exit(0);
+            // Environment.Exit(0);
         }
 
         private void linkProblems_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

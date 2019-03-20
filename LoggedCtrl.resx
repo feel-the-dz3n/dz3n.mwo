@@ -137,9 +137,6 @@
   <data name="LoggedAsLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;LoggedAsLabel.Parent" xml:space="preserve">
-    <value>LoggedInPanel</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="PlayMWOLink.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -213,14 +210,14 @@
   <data name="LoggedAsLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 5</value>
   </data>
-  <data name="&gt;&gt;LoggedAsLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="LogoutLink.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 43</value>
   </data>
   <data name="&gt;&gt;LoggedAsLabel.Name" xml:space="preserve">
     <value>LoggedAsLabel</value>
   </data>
-  <data name="LogoutLink.Text" xml:space="preserve">
-    <value>Logout...</value>
+  <data name="&gt;&gt;LoggedAsLabel.Parent" xml:space="preserve">
+    <value>LoggedInPanel</value>
   </data>
   <data name="PlayMWOLink.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -255,14 +252,17 @@
   <data name="LoggedAsLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>309, 36</value>
   </data>
+  <data name="&gt;&gt;LoggedAsLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;LogoutLink.Name" xml:space="preserve">
     <value>LogoutLink</value>
   </data>
   <data name="OnlinePlayers.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
   </data>
-  <data name="LogoutLink.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 43</value>
+  <data name="LogoutLink.Text" xml:space="preserve">
+    <value>Logout...</value>
   </data>
   <data name="&gt;&gt;PlayMWOLink.Name" xml:space="preserve">
     <value>PlayMWOLink</value>

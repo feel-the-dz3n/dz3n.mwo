@@ -117,14 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="OnlinePlayers.Location" type="System.Drawing.Point, System.Drawing">
+    <value>279, 44</value>
+  </data>
+  <data name="OnlinePlayers.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="PlayMWOLink.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Semibold, 15.75pt, style=Bold</value>
+  </data>
+  <data name="PlayMWOLink.Location" type="System.Drawing.Point, System.Drawing">
+    <value>332, 4</value>
+  </data>
   <data name="PlayMWOLink.Text" xml:space="preserve">
     <value>Играть</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="PlayMWOLink.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
+  <data name="LogoutLink.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 43</value>
+  </data>
   <data name="LogoutLink.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 15</value>
   </data>
   <data name="LogoutLink.Text" xml:space="preserve">
     <value>Выйти из аккаунта...</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LoggedInPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
 </root>

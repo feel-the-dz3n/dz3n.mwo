@@ -124,9 +124,6 @@
   <data name="ChangeSrv.ToolTip" xml:space="preserve">
     <value>Naciśnij aby zmienić serwer.</value>
   </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 20</value>
-  </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 20</value>
   </data>
@@ -135,6 +132,9 @@
   </data>
   <data name="PingLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>89, 0</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 20</value>
   </data>
   <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>427, 238</value>

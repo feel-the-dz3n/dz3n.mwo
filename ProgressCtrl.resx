@@ -134,6 +134,9 @@
   <data name="UpdProgress.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
+  <data name="UpdatePanel.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
   <data name="&gt;&gt;UpdatePanel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
@@ -149,20 +152,20 @@
   <data name="&gt;&gt;UpdProgress.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;UpdProgress.Name" xml:space="preserve">
-    <value>UpdProgress</value>
-  </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="UpdatePanel.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
+  <data name="&gt;&gt;UpdProgress.Name" xml:space="preserve">
+    <value>UpdProgress</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>ProgressCtrl</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -176,14 +179,11 @@
   <data name="UpdProgress.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 40</value>
   </data>
-  <data name="&gt;&gt;UpdatePanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;UpdatePanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>ProgressCtrl</value>
+  <data name="&gt;&gt;UpdatePanel.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

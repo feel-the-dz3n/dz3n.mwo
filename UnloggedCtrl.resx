@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 77</value>
-  </data>
   <data name="LoginBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>72, 15</value>
   </data>
@@ -133,8 +130,14 @@
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="&gt;&gt;LoginBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;panel1.Name" xml:space="preserve">
     <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;UnloggedPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>UnloggedCtrl</value>
@@ -255,9 +258,6 @@
   <data name="LoginBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 20</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 8pt</value>
   </data>
@@ -285,6 +285,9 @@
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="LogInButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 36</value>
   </data>
@@ -297,6 +300,9 @@
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>248, 9</value>
   </data>
+  <data name="&gt;&gt;SingUpButton.Name" xml:space="preserve">
+    <value>SingUpButton</value>
+  </data>
   <data name="UnloggedPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>440, 77</value>
   </data>
@@ -305,9 +311,6 @@
   </data>
   <data name="SingUpButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;LogInButton.Name" xml:space="preserve">
-    <value>LogInButton</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Password:</value>
@@ -321,8 +324,8 @@
   <data name="&gt;&gt;LoginBox.Name" xml:space="preserve">
     <value>LoginBox</value>
   </data>
-  <data name="LogInButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 77</value>
   </data>
   <data name="UnloggedPanel.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -339,9 +342,6 @@
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 17</value>
   </data>
-  <data name="LoginBox.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
   <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>UnloggedPanel</value>
   </data>
@@ -357,8 +357,8 @@
   <data name="&gt;&gt;UnloggedPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;UnloggedPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;LogInButton.Name" xml:space="preserve">
+    <value>LogInButton</value>
   </data>
   <data name="PwdBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 20</value>
@@ -369,14 +369,14 @@
   <data name="&gt;&gt;SingUpButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;SingUpButton.Name" xml:space="preserve">
-    <value>SingUpButton</value>
+  <data name="LoginBox.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
   </data>
   <data name="&gt;&gt;PwdBox.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;LoginBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;LogInButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

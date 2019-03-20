@@ -125,7 +125,7 @@
     <value>Dz3n.MWO zrobione przez dz3na, przetłumaczony przez bishopa</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>427, 20</value>
+    <value>426, 20</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Most Wanted Online stworzone przez osdevera i drużyne MWO</value>
@@ -147,6 +147,16 @@
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Zmień język:</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="linkLabel1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="linkLabel2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="linkLabel3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 90</value>

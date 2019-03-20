@@ -52,7 +52,7 @@
             resources.ApplyResources(this.OnlinePlayers, "OnlinePlayers");
             this.OnlinePlayers.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.OnlinePlayers.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.OnlinePlayers.LinkColor = System.Drawing.Color.White;
+            this.OnlinePlayers.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(177)))), ((int)(((byte)(137)))));
             this.OnlinePlayers.Name = "OnlinePlayers";
             this.OnlinePlayers.TabStop = true;
             this.OnlinePlayers.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnlinePlayers_LinkClicked);
@@ -61,7 +61,7 @@
             // 
             resources.ApplyResources(this.PlayMWOLink, "PlayMWOLink");
             this.PlayMWOLink.ActiveLinkColor = System.Drawing.Color.White;
-            this.PlayMWOLink.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(113)))));
+            this.PlayMWOLink.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(227)))));
             this.PlayMWOLink.Name = "PlayMWOLink";
             this.PlayMWOLink.TabStop = true;
             this.PlayMWOLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.PlayMWOLink_LinkClicked);
@@ -69,14 +69,15 @@
             // LoggedAsLabel
             // 
             resources.ApplyResources(this.LoggedAsLabel, "LoggedAsLabel");
-            this.LoggedAsLabel.ForeColor = System.Drawing.Color.White;
+            this.LoggedAsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(227)))));
             this.LoggedAsLabel.Name = "LoggedAsLabel";
             // 
             // LogoutLink
             // 
             resources.ApplyResources(this.LogoutLink, "LogoutLink");
             this.LogoutLink.ActiveLinkColor = System.Drawing.Color.White;
-            this.LogoutLink.LinkColor = System.Drawing.Color.Silver;
+            this.LogoutLink.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.LogoutLink.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(177)))), ((int)(((byte)(137)))));
             this.LogoutLink.Name = "LogoutLink";
             this.LogoutLink.TabStop = true;
             this.LogoutLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLink_LinkClicked);

@@ -39,6 +39,7 @@
             this.LoadingPanel.BackColor = System.Drawing.Color.Transparent;
             this.LoadingPanel.Controls.Add(this.OkButton);
             this.LoadingPanel.Controls.Add(this.LoadingLabel);
+            this.LoadingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LoadingPanel.Location = new System.Drawing.Point(0, 0);
             this.LoadingPanel.Name = "LoadingPanel";
             this.LoadingPanel.Size = new System.Drawing.Size(440, 77);
@@ -48,9 +49,9 @@
             // 
             this.OkButton.ActiveLinkColor = System.Drawing.Color.White;
             this.OkButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.OkButton.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.OkButton.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.OkButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.OkButton.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.OkButton.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(242)))), ((int)(((byte)(125)))));
             this.OkButton.Location = new System.Drawing.Point(0, 57);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(440, 20);
@@ -63,7 +64,7 @@
             // LoadingLabel
             // 
             this.LoadingLabel.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.LoadingLabel.ForeColor = System.Drawing.Color.White;
+            this.LoadingLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(227)))));
             this.LoadingLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.LoadingLabel.Location = new System.Drawing.Point(3, 0);
             this.LoadingLabel.Name = "LoadingLabel";
